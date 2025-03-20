@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export async function GET({request}) {
+export async function GET({request}: {request: any}) {
   
   const protocol = request.protocol;
     const host = request.get('host');
