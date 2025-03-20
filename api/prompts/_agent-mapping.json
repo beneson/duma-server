@@ -1,0 +1,27 @@
+{
+    "mockup-prompt": {
+        "agent-id": "af32a062-a022-4c15-8780-7f852e6ec56e",
+        "voice": "echo",
+        "instructions_path": "_mockup-prompt"
+    },
+    "retail": {
+        "agent-id": "ce6a8ea2-478a-4603-9334-6eb8ee48fc4d",
+        "voice": "alloy",
+        "instructions_path": "_retail-mockup"
+    },
+    "energy": {
+        "agent-id": "e6c123a0-1b9e-44d0-a602-51c0d927f95b",
+        "voice": "sage",
+        "instructions_path": "_energy-mockup"
+    },
+    "collection": {
+        "agent-id": "51ab4a14-8568-433b-a55c-489f0be1905a",
+        "voice": "shimmer",
+        "instructions_path": "_collection-mockup"
+    },
+    "salesAgent": {
+        "agent-id": "a6228eef-8e1e-4469-a7b9-8e26bc400f73",
+        "voice": "ash",
+        "instructions_path": "_duma-sales-agent-prompt"
+    }
+}
