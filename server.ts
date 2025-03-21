@@ -51,8 +51,9 @@ app.post('/api/openai-realtime', cors(openCorsOptions), async (req, res) => {
   res.send(body);
 });
 
-app.get('/api/supportdata', cors(openCorsOptions), (req, res) => {
+app.get('/api/supportdata', cors(openCorsOptions), async (req, res) => {
   res.send('Hello World');
+  res.status(200);
   //vincular com a função supportdata
 });
 
