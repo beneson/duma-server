@@ -51,6 +51,10 @@ app.post('/api/openai-realtime', cors(openCorsOptions), async (req, res) => {
   res.send(body);
 });
 
+app.get('api/supportdata', cors(openCorsOptions), (req, res) => {
+  res.send('Hello World');
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
