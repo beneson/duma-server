@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { GET as getDocumentHandler } from './api/getdocument';
 import { POST as openaiRealtimeHandler } from './api/openai-realtime';
+import { GET as supportdata } from './api/supportdata';
 
 const app = express();
 app.use(express.text({ type: 'application/sdp' }));
@@ -24,14 +25,10 @@ app.use(cors(defaultCorsOptions));
 // Route for getdocument
 app.get('/api/getdocument', cors(openCorsOptions), async (req, res) => {
   const response = await getDocumentHandler({ request: req });
-  
-  // Transfer status and headers from the handler response
   res.status(response.status);
   response.headers.forEach((value, key) => {
     res.setHeader(key, value);
   });
-  
-  // Send the response body
   const body = await response.text();
   res.send(body);
 });
@@ -39,22 +36,22 @@ app.get('/api/getdocument', cors(openCorsOptions), async (req, res) => {
 // Route for openai-realtime
 app.post('/api/openai-realtime', cors(openCorsOptions), async (req, res) => {
   const response = await openaiRealtimeHandler({ request: req });
-  
-  // Transfer status and headers from the handler response
   res.status(response.status);
   response.headers.forEach((value, key) => {
     res.setHeader(key, value);
   });
-  
-  // Send the response body
   const body = await response.text();
   res.send(body);
 });
 
 app.get('/api/supportdata', cors(openCorsOptions), async (req, res) => {
-  res.send('Hello World');
-  res.status(200);
-  //vincular com a função supportdata
+  const response = await supportdata({ request: req });
+  res.status(response.status);
+  response.headers.forEach((value: string, key: string) => {
+    res.setHeader(key, value);
+  });
+  const body = await response.text();
+  res.send(body);
 });
 
 const PORT = process.env.PORT || 3000;

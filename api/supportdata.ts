@@ -1,5 +1,5 @@
-
 import fs from 'fs';
+import path from 'path';
 const fastLevenshtein = require('fast-levenshtein');
 
 // Endpoint para buscar dados do cliente com base no documento (CPF)
@@ -10,18 +10,21 @@ export async function GET({ request }: { request: any }) {
     }
     const formatDocument = document.replace(/[.-]/g, '');
 
-    const filePath = './data/clients.json';
+    const filePath = path.join(__dirname, '/data/clients.json');
     let clientsData: any[] = [];
     try {
         const fileContent = fs.readFileSync(filePath, 'utf8');
         clientsData = JSON.parse(fileContent);
-        
+
         if (!Array.isArray(clientsData)) {
             throw new Error('O arquivo JSON não contém um array');
         }
     } catch (error: any) {
-        return request.status(500).json({ 
-            error: `Erro ao carregar dados dos clientes: ${error.message}` 
+        return new Response(JSON.stringify({
+            error: `Erro ao carregar dados dos clientes: ${error.message}`
+        }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' }
         });
     }
 
@@ -33,9 +36,15 @@ export async function GET({ request }: { request: any }) {
     });
 
     if (!client) {
-        return request.status(404).json({ error: "Cliente não encontrado" });
+        return new Response(JSON.stringify({ error: "Cliente não encontrado" }), {
+            status: 404,
+            headers: { 'Content-Type': 'application/json' }
+        });
     }
-    return request.json(client);
+    return new Response(JSON.stringify(client), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
+    });
 };
 
 // Função para calcular similaridade usando fast-levenshtein
