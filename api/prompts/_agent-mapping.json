@@ -6,17 +6,17 @@
     },
     "retail": {
         "agent-id": "ce6a8ea2-478a-4603-9334-6eb8ee48fc4d",
-        "voice": "alloy",
+        "voice": "shimmer",
         "instructions_path": "_retail-mockup"
     },
     "energy": {
         "agent-id": "e6c123a0-1b9e-44d0-a602-51c0d927f95b",
-        "voice": "sage",
+        "voice": "verse",
         "instructions_path": "_energy-mockup"
     },
     "collection": {
         "agent-id": "51ab4a14-8568-433b-a55c-489f0be1905a",
-        "voice": "shimmer",
+        "voice": "onyx",
         "instructions_path": "_collection-mockup"
     },
     "salesAgent": {
