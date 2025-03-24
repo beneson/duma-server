@@ -9,11 +9,10 @@ export async function GET({ request }: { request: any }) {
         return request.status(400).json({ error: "document é obrigatório" });
     }
     const formatDocument = document.replace(/[.-]/g, '');
-    // Procura o cliente com similaridade >= 75%
-    const client = clientsData.find(client => {
-        const clientFormatDocument = client.cpf.replace(/[.-]/g, '');
+    const client = clientData.find(client => {
+        const clientFormatDocument = client.document.replace(/[.-]/g, '');
         const similarity = calculateSimilarity(clientFormatDocument, formatDocument);
-        return similarity >= 75;
+        return similarity >= 85;
     });
 
     if (!client) {
@@ -35,12 +34,13 @@ function calculateSimilarity(str1: string, str2: string) {
     return ((maxLength - distance) / maxLength) * 100;
 }
 
-const clientsData =
+const clientData =
     [
         {
             "idCliente": 1,
             "nomeCompleto": "Beneson Corrêa Damasceno",
-            "cpf": "14928872770",
+            "receiverName": "MARIA SOUZA SANTOS",
+            "document": "14928872770",
             "endereco": {
                 "logradouro": "Rua das Amendoeiras",
                 "numero": 120,
@@ -75,7 +75,7 @@ const clientsData =
         {
             "idCliente": 2,
             "nomeCompleto": "João Batista Pereira",
-            "cpf": "987.654.321-00",
+            "document": "987.654.321-00",
             "endereco": {
                 "logradouro": "Avenida Brasil",
                 "numero": 456,
@@ -115,266 +115,408 @@ const clientsData =
             ]
         },
         {
-            "idCliente": 3,
-            "nomeCompleto": "Fernanda Costa Silva",
-            "cpf": "321.654.987-02",
-            "endereco": {
-                "logradouro": "Rua Maranhão",
-                "numero": 789,
-                "bairro": "Bela Vista",
-                "cidade": "Belo Horizonte",
-                "estado": "MG",
-                "cep": "30150-100"
-            },
-            "telefoneContato": "(31) 99876-5432",
-            "historicoFaturas": [
+            "orderId": "v22987004frm-02",
+            "document": "80711847568",
+            "sequence": "22987005",
+            "marketplaceOrderId": "",
+            "marketplaceServicesEndpoint": null,
+            "sellerOrderId": "885934",
+            "origin": "Marketplace",
+            "affiliateId": "",
+            "salesChannel": "9",
+            "merchantName": null,
+            "status": "invoice",
+            "workflowIsInError": true,
+            "statusDescription": "Verificando Fatura",
+            "value": 11920,
+            "creationDate": "2025-03-20T17:17:02.3751439+00:00",
+            "lastChange": "2025-03-21T14:47:43.8175360+00:00",
+            "orderGroup": "v22987004frm",
+            "followUpEmail": "3de3264add2f4fda83d6cf343a0b0334@ct.vtex.com.br",
+            "lastMessage": null,
+            "hostname": "lojafarm",
+            "isCompleted": true,
+            "roundingError": 0,
+            "orderFormId": "d322fe3f67c74bceb6c764276a2c5905",
+            "allowCancellation": false,
+            "allowEdition": false,
+            "isCheckedIn": false,
+            "authorizedDate": "2025-03-20T17:17:24.0000000+00:00",
+            "invoicedDate": null,
+            "cancelReason": null,
+            "checkedInPickupPointId": null,
+            "totals": [
                 {
-                    "mesReferencia": "2024-12",
-                    "dataVencimento": "2024-12-10",
-                    "valor": 89.90,
-                    "status": "Paga"
+                    "id": "Items",
+                    "name": "Total dos Itens",
+                    "value": 14900
                 },
                 {
-                    "mesReferencia": "2025-01",
-                    "dataVencimento": "2025-01-10",
-                    "valor": 105.75,
-                    "status": "Paga"
+                    "id": "Discounts",
+                    "name": "Total dos Descontos",
+                    "value": -2980
+                },
+                {
+                    "id": "Shipping",
+                    "name": "Total do Frete",
+                    "value": 0,
+                    "alternativeTotals": [
+                        {
+                            "id": "AlternativeShippingTotal",
+                            "name": "Alternative Shipping Total",
+                            "value": 1500
+                        },
+                        {
+                            "id": "AlternativeShippingDiscount",
+                            "name": "Alternative Shipping Discount",
+                            "value": -1500
+                        }
+                    ]
+                },
+                {
+                    "id": "Tax",
+                    "name": "Total da Taxa",
+                    "value": 0
                 }
             ],
-            "incidentesReportados": []
-        },
-        {
-            "idCliente": 4,
-            "nomeCompleto": "Pedro Henrique Souza",
-            "cpf": "555.888.777-03",
-            "endereco": {
-                "logradouro": "Rua Bariri",
-                "numero": 100,
-                "bairro": "Ramos",
-                "cidade": "Rio de Janeiro",
-                "estado": "RJ",
-                "cep": "21031-000"
-            },
-            "telefoneContato": "(21) 93456-7890",
-            "historicoFaturas": [
+            "sellers": [
                 {
-                    "mesReferencia": "2024-11",
-                    "dataVencimento": "2024-11-09",
-                    "valor": 134.20,
-                    "status": "Paga"
-                },
-                {
-                    "mesReferencia": "2024-12",
-                    "dataVencimento": "2024-12-09",
-                    "valor": 130.65,
-                    "status": "Paga"
-                },
-                {
-                    "mesReferencia": "2025-01",
-                    "dataVencimento": "2025-01-09",
-                    "valor": 125.10,
-                    "status": "Paga"
+                    "id": "MKTP183",
+                    "name": "MKTP_DOM STORE MULTIMARCAS",
+                    "logo": "https://somaplace.somalabs.com.br/app/",
+                    "fulfillmentEndpoint": "https://gruposomaapi.conectala.com.br/app/Api/SellerCenter/Vtex/Farm"
                 }
             ],
-            "incidentesReportados": []
-        },
-        {
-            "idCliente": 5,
-            "nomeCompleto": "Carolina Oliveira Santos",
-            "cpf": "999.111.222-44",
-            "endereco": {
-                "logradouro": "Rua Tiradentes",
-                "numero": 45,
-                "bairro": "Jardim Imperial",
-                "cidade": "Curitiba",
-                "estado": "PR",
-                "cep": "80030-100"
+            "clientPreferencesData": {
+                "locale": "pt-BR",
+                "optinNewsLetter": true
             },
-            "telefoneContato": "(41) 98765-4422",
-            "historicoFaturas": [
-                {
-                    "mesReferencia": "2024-12",
-                    "dataVencimento": "2024-12-15",
-                    "valor": 180.00,
-                    "status": "Paga"
+            "cancellationData": null,
+            "taxData": null,
+            "subscriptionData": null,
+            "itemMetadata": {
+                "Items": [
+                    {
+                        "Id": "539394",
+                        "Seller": "MKTP183",
+                        "Name": "Toalha Tchibum Bananarte Bananarte - U",
+                        "SkuName": "Bananarte - U",
+                        "ProductId": "154642",
+                        "RefId": "343850_00064_1",
+                        "Ean": "3438500006401",
+                        "ImageUrl": "https://lojafarm.vteximg.com.br/arquivos/ids/3401874-100-150/343850_00064_1-TOALHA-TCHIBUM-BANANARTE.jpg?v=638573412374230000",
+                        "DetailUrl": "/toalha-tchibum-bananarte-bananarte-343850-00064/p",
+                        "AssemblyOptions": []
+                    },
+                    {
+                        "Id": "515439",
+                        "Seller": "1",
+                        "Name": "Vestido Fenda Estampado Jardim Da Grécia Jardim Da Grecia_Off White - M",
+                        "SkuName": "Jardim Da Grecia_Off White - M",
+                        "ProductId": "149301",
+                        "RefId": "334855_49183_3",
+                        "Ean": "33485549183M",
+                        "ImageUrl": "https://lojafarm.vteximg.com.br/arquivos/ids/3427623-100-150/334855_49183_1-VESTIDO-FENDA-JARDIM-DA-GRECIA.jpg?v=638604119042070000",
+                        "DetailUrl": "/vestido-fenda-estampado-jardim-da-grecia-jardim-da-grecia_off-white-334855-49183/p",
+                        "AssemblyOptions": []
+                    },
+                    {
+                        "Id": "526145",
+                        "Seller": "1",
+                        "Name": "Short Sarja Bainha Dobrada Laranja Neon Laranja Neon - 38",
+                        "SkuName": "Laranja Neon - 38",
+                        "ProductId": "151628",
+                        "RefId": "338849_0005_3",
+                        "Ean": "338849000538",
+                        "ImageUrl": "https://lojafarm.vteximg.com.br/arquivos/ids/3403617-100-150/338849_0005_1-SHORT-SARJA-BAINHA-DOBRADA-LARANJA-NEON.jpg?v=638575301075700000",
+                        "DetailUrl": "/short-sarja-bainha-dobrada-laranja-neon-laranja-neon-338849-0005/p",
+                        "AssemblyOptions": []
+                    },
+                    {
+                        "Id": "544837",
+                        "Seller": "1",
+                        "Name": "Maiô Side Boob Estampado Festa Das Araras Est Festa Das Araras_Biquini Praia_Multi - P",
+                        "SkuName": "Est Festa Das Araras_Biquini Praia_Multi - P",
+                        "ProductId": "155769",
+                        "RefId": "333192_49017_2",
+                        "Ean": "33319249017P",
+                        "ImageUrl": "https://lojafarm.vteximg.com.br/arquivos/ids/3442343-100-150/333192_49017_1-MAIO-SIDE-BOOB-ESTAMPADO-FESTA-DAS-ARARAS.jpg?v=638647902791630000",
+                        "DetailUrl": "/maio-side-boob-estampado-festa-das-araras-est-festa-das-araras_biquini-praia_multi-333192-49017/p",
+                        "AssemblyOptions": []
+                    }
+                ]
+            },
+            "marketplace": null,
+            "storePreferencesData": {
+                "countryCode": "BRA",
+                "currencyCode": "BRL",
+                "currencyFormatInfo": {
+                    "CurrencyDecimalDigits": 2,
+                    "CurrencyDecimalSeparator": ",",
+                    "CurrencyGroupSeparator": ".",
+                    "CurrencyGroupSize": 3,
+                    "StartsWithCurrencySymbol": true
                 },
+                "currencyLocale": 1046,
+                "currencySymbol": "R$",
+                "timeZone": "E. South America Standard Time"
+            },
+            "customData": null,
+            "commercialConditionData": null,
+            "openTextField": {
+                "value": "7483 - ANA OLIVEIRA"
+            },
+            "invoiceData": null,
+            "changesAttachment": null,
+            "callCenterOperatorData": null,
+            "paymentData": {
+                "transactions": [
+                    {
+                        "isActive": true,
+                        "transactionId": "12C473AED7A24B2BA420A9EC3B9C5349",
+                        "merchantName": "LOJAFARM",
+                        "payments": [
+                        ]
+                    }
+                ],
+                "giftCards": []
+            },
+            "shippingData": {
+                "id": "shippingData",
+                "address": {
+                    "addressType": "residential",
+                    "receiverName": "MARIA SOUZA SANTOS",
+                    "addressId": "79894969a847402e9bb9ee5424d60e37",
+                    "versionId": null,
+                    "entityId": null,
+                    "postalCode": "41760050",
+                    "city": "Salvador",
+                    "state": "BA",
+                    "country": "BRA",
+                    "street": "Rua Doutor Arnaldo",
+                    "number": "272",
+                    "neighborhood": "Costa Azul",
+                    "complement": "Ed Côte d’Azur 103",
+                    "reference": null,
+                    "geoCoordinates": [
+                        -38.449073791503906,
+                        -12.996094703674316
+                    ]
+                },
+                "trackingHints": null,
+                "selectedAddresses": [
+                    {
+                        "addressType": "residential",
+                        "receiverName": "MARIA SOUZA SANTOS",
+                        "addressId": "79894969a847402e9bb9ee5424d60e37",
+                        "versionId": null,
+                        "entityId": null,
+                        "postalCode": "41760050",
+                        "city": "Salvador",
+                        "state": "BA",
+                        "country": "BRA",
+                        "street": "Rua Doutor Boureau",
+                        "number": "272",
+                        "neighborhood": "Costa Azul",
+                        "complement": "Ed Côte d’Azur 103",
+                        "reference": null,
+                        "geoCoordinates": [
+                            -38.449073791503906,
+                            -12.996094703674316
+                        ]
+                    }
+                ],
+                "availableAddresses": [
+                    {
+                        "addressType": "residential",
+                        "receiverName": "MARIA SOUZA SANTOS",
+                        "addressId": "79894969a847402e9bb9ee5424d60e37",
+                        "versionId": null,
+                        "entityId": null,
+                        "postalCode": "41760050",
+                        "city": "Salvador",
+                        "state": "BA",
+                        "country": "BRA",
+                        "street": "Rua Doutor Boureau",
+                        "number": "272",
+                        "neighborhood": "Costa Azul",
+                        "complement": "Ed Côte d’Azur 103",
+                        "reference": null,
+                        "geoCoordinates": [
+                            -38.449073791503906,
+                            -12.996094703674316
+                        ]
+                    }
+                ],
+                "contactInformation": []
+            },
+            "marketingData": {
+                "id": "marketingData",
+                "utmSource": null,
+                "utmPartner": null,
+                "utmMedium": null,
+                "utmCampaign": null,
+                "coupon": "bazar20",
+                "utmiCampaign": "codigodavendedora",
+                "utmipage": null,
+                "utmiPart": null,
+                "marketingTags": [
+                    "app_2.55.0",
+                    "app_ios",
+                    "app_iphone17,1"
+                ]
+            },
+            "giftRegistryData": null,
+            "clientProfileData": {
+                "id": "clientProfileData",
+                "email": "3de3264add2f4fda83d6cf343a0b0334@ct.vtex.com.br",
+                "firstName": "PAULA SHIRLEY SOUZA",
+                "lastName": "SANTOS",
+                "documentType": "cpf",
+                "phone": "+55719997746",
+                "corporateName": null,
+                "tradeName": null,
+                "corporateDocument": null,
+                "stateInscription": null,
+                "corporatePhone": null,
+                "isCorporate": false,
+                "userProfileId": "0289ba47-1eff-46d2-99f1-8111a7a32271",
+                "userProfileVersion": null,
+                "customerClass": null,
+                "customerCode": null
+            },
+            "items": [
                 {
-                    "mesReferencia": "2025-01",
-                    "dataVencimento": "2025-01-15",
-                    "valor": 172.50,
-                    "status": "Paga"
+                    "uniqueId": "B5EB7C7C758E47A5858A3B9234A0C9BA",
+                    "id": "539394",
+                    "productId": "154642",
+                    "ean": "3438500006401",
+                    "lockId": null,
+                    "itemAttachment": {
+                        "content": {},
+                        "name": null
+                    },
+                    "attachments": [],
+                    "quantity": 1,
+                    "seller": "MKTP183",
+                    "name": "Toalha Tchibum Bananarte Bananarte - U",
+                    "refId": "343850_00064_1",
+                    "price": 14900,
+                    "listPrice": 14900,
+                    "manualPrice": null,
+                    "manualPriceAppliedBy": null,
+                    "priceTags": [
+                        {
+                            "name": "discount@price-366b734b-74ba-48a9-af80-9141c02739ed#caf7ae07-0e29-4076-8612-d120a83eccd8",
+                            "value": -2980,
+                            "isPercentual": false,
+                            "identifier": "366b734b-74ba-48a9-af80-9141c02739ed",
+                            "rawValue": -29.80,
+                            "rate": null,
+                            "jurisCode": null,
+                            "jurisType": null,
+                            "jurisName": null
+                        },
+                        {
+                            "name": "discount@shipping-766d65b4-9e4b-4153-9595-abf2e6261e55#94f97370-de92-452e-9b7c-a189a01ebd7a",
+                            "value": -1500,
+                            "isPercentual": false,
+                            "identifier": "766d65b4-9e4b-4153-9595-abf2e6261e55",
+                            "rawValue": -15.0,
+                            "rate": null,
+                            "jurisCode": null,
+                            "jurisType": null,
+                            "jurisName": null
+                        },
+                        {
+                            "name": "discount@shipping-103b6e20-d00d-475c-9585-2e344f767cf0#2912a011-dd98-4a6e-ae07-af0e95ab9a18",
+                            "value": 0,
+                            "isPercentual": false,
+                            "identifier": "103b6e20-d00d-475c-9585-2e344f767cf0",
+                            "rawValue": 0.0,
+                            "rate": null,
+                            "jurisCode": null,
+                            "jurisType": null,
+                            "jurisName": null
+                        }
+                    ],
+                    "imageUrl": "https://lojafarm.vteximg.com.br/arquivos/ids/3401874-100-150/343850_00064_1-TOALHA-TCHIBUM-BANANARTE.jpg?v=638573412374230000",
+                    "detailUrl": "/toalha-tchibum-bananarte-bananarte-343850-00064/p",
+                    "components": [],
+                    "bundleItems": [],
+                    "params": [],
+                    "offerings": [],
+                    "attachmentOfferings": [],
+                    "sellerSku": "78317061",
+                    "priceValidUntil": "2026-03-20T17:14:03.0000000+00:00",
+                    "commission": 2000,
+                    "tax": 0,
+                    "preSaleDate": null,
+                    "additionalInfo": {
+                        "brandName": "Farm",
+                        "brandId": "2000001",
+                        "categoriesIds": "/2/386/",
+                        "categories": [
+                            {
+                                "id": 386,
+                                "name": "Acessórios"
+                            },
+                            {
+                                "id": 2,
+                                "name": "bazar farm"
+                            },
+                            {
+                                "id": 428,
+                                "name": "me leva"
+                            },
+                            {
+                                "id": 1,
+                                "name": "Moda Feminina"
+                            }
+                        ],
+                        "productClusterId": "141,143,144,191,271,278,794,1048,1380,1444,1445,1446,1448,1460,1488,1619",
+                        "commercialConditionId": "1",
+                        "dimension": {
+                            "cubicweight": 0.0,
+                            "height": 1.0,
+                            "length": 1.0,
+                            "weight": 333.0,
+                            "width": 1.0
+                        },
+                        "offeringInfo": null,
+                        "offeringType": null,
+                        "offeringTypeId": null
+                    },
+                    "measurementUnit": "un",
+                    "unitMultiplier": 1.0,
+                    "sellingPrice": 11920,
+                    "isGift": false,
+                    "shippingPrice": null,
+                    "rewardValue": 0,
+                    "freightCommission": 0,
+                    "priceDefinition": {
+                        "sellingPrices": [
+                            {
+                                "value": 11920,
+                                "quantity": 1
+                            }
+                        ],
+                        "calculatedSellingPrice": 11920,
+                        "total": 11920,
+                        "reason": null
+                    },
+                    "taxCode": "63029300",
+                    "parentItemIndex": null,
+                    "parentAssemblyBinding": null,
+                    "callCenterOperator": null,
+                    "serialNumbers": null,
+                    "assemblies": [],
+                    "costPrice": null
                 }
             ],
-            "incidentesReportados": []
-        },
-        {
-            "idCliente": 6,
-            "nomeCompleto": "Thiago Gonçalves Machado",
-            "cpf": "444.777.333-66",
-            "endereco": {
-                "logradouro": "Avenida Ceará",
-                "numero": 1000,
-                "bairro": "Centro",
-                "cidade": "Fortaleza",
-                "estado": "CE",
-                "cep": "60060-120"
-            },
-            "telefoneContato": "(85) 99999-2222",
-            "historicoFaturas": [
-                {
-                    "mesReferencia": "2024-11",
-                    "dataVencimento": "2024-11-08",
-                    "valor": 200.75,
-                    "status": "Paga"
-                },
-                {
-                    "mesReferencia": "2024-12",
-                    "dataVencimento": "2024-12-08",
-                    "valor": 198.90,
-                    "status": "Paga"
-                },
-                {
-                    "mesReferencia": "2025-01",
-                    "dataVencimento": "2025-01-08",
-                    "valor": 212.35,
-                    "status": "Paga"
-                }
-            ],
-            "incidentesReportados": [
-                {
-                    "dataOcorrencia": "2024-09-22",
-                    "motivo": "Oscilação de tensão",
-                    "descricao": "Equipamentos desligando repetidamente",
-                    "tipoResolucao": "Monitoramento e ajuste na rede"
-                }
-            ]
-        },
-        {
-            "idCliente": 7,
-            "nomeCompleto": "Ana Carolina Almeida",
-            "cpf": "777.666.555-77",
-            "endereco": {
-                "logradouro": "Rua XV de Novembro",
-                "numero": 67,
-                "bairro": "Jardim Paulista",
-                "cidade": "São Paulo",
-                "estado": "SP",
-                "cep": "01310-200"
-            },
-            "telefoneContato": "(11) 94567-8901",
-            "historicoFaturas": [
-                {
-                    "mesReferencia": "2024-12",
-                    "dataVencimento": "2024-12-07",
-                    "valor": 150.00,
-                    "status": "Paga"
-                },
-                {
-                    "mesReferencia": "2025-01",
-                    "dataVencimento": "2025-01-07",
-                    "valor": 140.25,
-                    "status": "Paga"
-                }
-            ],
-            "incidentesReportados": []
-        },
-        {
-            "idCliente": 8,
-            "nomeCompleto": "Guilherme Alves Teixeira",
-            "cpf": "111.222.333-88",
-            "endereco": {
-                "logradouro": "Rua das Palmeiras",
-                "numero": 230,
-                "bairro": "Vila Mariana",
-                "cidade": "São Paulo",
-                "estado": "SP",
-                "cep": "04114-050"
-            },
-            "telefoneContato": "(11) 98655-3322",
-            "historicoFaturas": [
-                {
-                    "mesReferencia": "2024-11",
-                    "dataVencimento": "2024-11-10",
-                    "valor": 102.50,
-                    "status": "Paga"
-                },
-                {
-                    "mesReferencia": "2024-12",
-                    "dataVencimento": "2024-12-10",
-                    "valor": 98.00,
-                    "status": "Paga"
-                },
-                {
-                    "mesReferencia": "2025-01",
-                    "dataVencimento": "2025-01-10",
-                    "valor": 95.80,
-                    "status": "Paga"
-                }
-            ],
-            "incidentesReportados": []
-        },
-        {
-            "idCliente": 9,
-            "nomeCompleto": "Beatriz Rodrigues de Souza",
-            "cpf": "222.333.444-99",
-            "endereco": {
-                "logradouro": "Rua Santa Clara",
-                "numero": 510,
-                "bairro": "Copacabana",
-                "cidade": "Rio de Janeiro",
-                "estado": "RJ",
-                "cep": "22041-010"
-            },
-            "telefoneContato": "(21) 94444-5566",
-            "historicoFaturas": [
-                {
-                    "mesReferencia": "2024-12",
-                    "dataVencimento": "2024-12-13",
-                    "valor": 184.90,
-                    "status": "Paga"
-                },
-                {
-                    "mesReferencia": "2025-01",
-                    "dataVencimento": "2025-01-13",
-                    "valor": 176.30,
-                    "status": "Paga"
-                }
-            ],
-            "incidentesReportados": []
-        },
-        {
-            "idCliente": 10,
-            "nomeCompleto": "Lucas Martins Ferraz",
-            "cpf": "020900",
-            "endereco": {
-                "logradouro": "Rua Dom Pedro II",
-                "numero": 900,
-                "bairro": "Boa Vista",
-                "cidade": "Recife",
-                "estado": "PE",
-                "cep": "50050-002"
-            },
-            "telefoneContato": "(81) 97777-0011",
-            "historicoFaturas": [
-                {
-                    "mesReferencia": "2024-11",
-                    "dataVencimento": "2024-11-20",
-                    "valor": 210.05,
-                    "status": "Paga"
-                },
-                {
-                    "mesReferencia": "2024-12",
-                    "dataVencimento": "2024-12-20",
-                    "valor": 200.00,
-                    "status": "Paga"
-                },
-                {
-                    "mesReferencia": "2025-01",
-                    "dataVencimento": "2025-01-20",
-                    "valor": 205.75,
-                    "status": "Em Aberto"
-                }
-            ],
-            "incidentesReportados": []
+            "marketplaceItems": [],
+            "cancellationRequests": null,
+            "approvedBy": null,
+            "cancelledBy": null
         }
     ];
