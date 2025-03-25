@@ -37,6 +37,57 @@ function calculateSimilarity(str1: string, str2: string) {
 const clientData =
     [
         {
+            "nome": "Bruno Lopes",
+            "documeno": "456.789.123-00",
+            "data_nascimento": "1988-05-22",
+            "endereco": {
+                "logradouro": "Rua das Palmeiras",
+                "numero": "120",
+                "complemento": "Apartamento 502, Bloco B",
+                "bairro": "Jardim Europa",
+                "cidade": "São Paulo",
+                "estado": "SP",
+                "cep": "01456-000"
+            },
+            "contato": {
+                "telefone_celular": "(11) 98765-4321",
+                "telefone_residencial": "(11) 3344-5566",
+                "email": "bruno.lopes@email.com"
+            }
+            ,
+            "dividas": [
+                {
+                    "contrato": "0012456789",
+                    "descricao": "Empréstimo Pessoal",
+                    "valor_original": 15000.00,
+                    "valor_atualizado": 17650.35,
+                    "data_emissao": "2024-10-10",
+                    "data_vencimento": "2024-11-10",
+                    "dias_em_atraso": 135,
+                    "status": "Em aberto",
+                    "acordo_disponivel": true,
+                    "desconto_para_quitacao": "15%",
+                    "canal_negociacao": "www.bancox.com.br/negocie"
+                },
+                {
+                    "contrato": "0035698741",
+                    "descricao": "Cartão de Crédito",
+                    "valor_original": 5200.00,
+                    "valor_atualizado": 5890.10,
+                    "data_emissao": "2024-12-05",
+                    "data_vencimento": "2025-01-05",
+                    "dias_em_atraso": 80,
+                    "status": "Em aberto",
+                    "acordo_disponivel": true,
+                    "desconto_para_quitacao": "10%",
+                    "canal_negociacao": "www.bancox.com.br/negocie"
+                }
+            ],
+            "observacoes": "Cliente com bom histórico de relacionamento até 2023. Ofertas especiais disponíveis para pagamento à vista ou parcelamento em até 12x sem juros até 31/03/2025.",
+            "ultima_atualizacao": "2025-03-25T09:00:00Z"
+        },
+
+        {
             "idCliente": 1,
             "nomeCompleto": "Jonathan Santos",
             "document": " 987.654.321-00",
