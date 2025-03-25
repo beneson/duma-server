@@ -16,7 +16,7 @@
     },
     "collection": {
         "agent-id": "51ab4a14-8568-433b-a55c-489f0be1905a",
-        "voice": "shimmer",
+        "voice": "echo",
         "instructions_path": "_collection-mockup"
     },
     "salesAgent": {
