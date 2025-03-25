@@ -14,51 +14,35 @@ Script:
 
 
 Dados do cliente:
-            "nome": "Bruno Lopes",
-            "documeno": "456.789.123-00",
-            "data_nascimento": "1988-05-22",
-            "endereco": {
-                "logradouro": "Rua das Palmeiras",
-                "numero": "120",
-                "complemento": "Apartamento 502, Bloco B",
-                "bairro": "Jardim Europa",
-                "cidade": "São Paulo",
-                "estado": "SP",
-                "cep": "01456-000"
-            },
-            "contato": {
-                "telefone_celular": "(11) 98765-4321",
-                "telefone_residencial": "(11) 3344-5566",
-                "email": "bruno.lopes@email.com"
-            }
-            ,
-            "dividas": [
-                {
-                    "contrato": "0012456789",
-                    "descricao": "Empréstimo Pessoal",
-                    "valor_original": 15000.00,
-                    "valor_atualizado": 17650.35,
-                    "data_emissao": "2024-10-10",
-                    "data_vencimento": "2024-11-10",
-                    "dias_em_atraso": 135,
-                    "status": "Em aberto",
-                    "acordo_disponivel": true,
-                    "desconto_para_quitacao": "15%",
-                    "canal_negociacao": "www.bancox.com.br/negocie"
-                },
-                {
-                    "contrato": "0035698741",
-                    "descricao": "Cartão de Crédito",
-                    "valor_original": 5200.00,
-                    "valor_atualizado": 5890.10,
-                    "data_emissao": "2024-12-05",
-                    "data_vencimento": "2025-01-05",
-                    "dias_em_atraso": 80,
-                    "status": "Em aberto",
-                    "acordo_disponivel": true,
-                    "desconto_para_quitacao": "10%",
-                    "canal_negociacao": "www.bancox.com.br/negocie"
-                }
-            ],
-            "observacoes": "Cliente com bom histórico de relacionamento até 2023. Ofertas especiais disponíveis para pagamento à vista ou parcelamento em até 12x sem juros até 31/03/2025.",
-            "ultima_atualizacao": "2025-03-25T09:00:00Z"
+
+Cliente: Bruno Lopes
+Documento: 456.789.123-00
+
+Contatos:
+	•	Celular: (11) 98765-4321
+	•	Residencial: (11) 3344-5566
+	•	E-mail: bruno.lopes@email.com
+
+Localização: São Paulo – SP
+
+⸻
+
+Resumo das Dívidas:
+
+1. Empréstimo Pessoal
+	•	Contrato: 0012456789
+	•	Valor original: R$ 15.000,00
+	•	Valor atualizado: R$ 17.650,35
+	•	Em atraso há 135 dias
+	•	Status: Em aberto
+	•	Acordo disponível com 15% de desconto para quitação
+
+2. Cartão de Crédito
+	•	Contrato: 0035698741
+	•	Valor original: R$ 5.200,00
+	•	Valor atualizado: R$ 5.890,10
+	•	Em atraso há 80 dias
+	•	Status: Em aberto
+	•	Acordo disponível com 10% de desconto para quitação
+
+⸻
