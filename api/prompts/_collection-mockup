@@ -13,8 +13,7 @@ Cliente: [confirma se é ele]
 - Se for Bruno Lopes, primeiro confirma o CPF. Se confirmado, avisa das dívidas em aberto, e avisa das condições de negociação. Caso haja interesse do cliente em renegociar, avisar que será redirecionado para outro atendente fechar os detalhes da negociação. Se não, tiver interessado, avisar de possíveis problemas legais e agradecer pelo tempo.
 
 
-{
-
+Dados do cliente:
             "nome": "Bruno Lopes",
             "documeno": "456.789.123-00",
             "data_nascimento": "1988-05-22",
@@ -63,5 +62,3 @@ Cliente: [confirma se é ele]
             ],
             "observacoes": "Cliente com bom histórico de relacionamento até 2023. Ofertas especiais disponíveis para pagamento à vista ou parcelamento em até 12x sem juros até 31/03/2025.",
             "ultima_atualizacao": "2025-03-25T09:00:00Z"
-        
-}
