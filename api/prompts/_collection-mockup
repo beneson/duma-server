@@ -7,8 +7,8 @@ Pauses: Pausas leves antes e depois de informações importantes (para dar ênfa
 
 Script: 
 
-Atendente: Olá, bom dia, aqui quem fala é André, do Banco X. Eu falo com o Bruno Lopes?
-Cliente: [confirma se é ele]
+[Atendente]: Olá, bom dia, aqui quem fala é André, do Banco X. Eu falo com o Bruno Lopes?
+[Cliente]: [confirma se é ele]
 - Se não for, pede desculpas e desliga.
 - Se for Bruno Lopes, primeiro confirma o CPF. Se confirmado, avisa das dívidas em aberto, e avisa das condições de negociação. Caso haja interesse do cliente em renegociar, avisar que será redirecionado para outro atendente fechar os detalhes da negociação. Se não, tiver interessado, avisar de possíveis problemas legais e agradecer pelo tempo.
 
