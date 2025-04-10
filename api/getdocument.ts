@@ -20,17 +20,18 @@ export async function GET({request}: {request: any}) {
       }
     });
   }
-  const filePath = path.join(process.cwd(), 'api', 'prompts', document);
+
+  let filePath;
+
+  if (language) {
+    filePath = path.join(process.cwd(), 'api', 'prompts', language, document);
+  }else{
+  filePath = path.join(process.cwd(), 'api', 'prompts', document);
+  }
   
   try {
     console.log('Lendo o arquivo:', filePath);
     let fileContent = fs.readFileSync(filePath, 'utf-8');
-
-
-  if (language) {
-    const promptLanguage = 'Língua de resposta: ' + language;
-    fileContent = promptLanguage + '\n\n' + fileContent;
-  }
 
     // Verificar se é um arquivo JSON ou texto
     if (document.endsWith('.json')) {
