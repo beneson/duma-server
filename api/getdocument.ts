@@ -12,7 +12,7 @@ export async function GET({request}: {request: any}) {
     const document = params.get('document');
     const language = params.get('language');
   
-  if (!document || !language) {
+  if (!document) {
     return new Response(JSON.stringify({ error: 'Documento não fornecido' }), {
       status: 400,
       headers: {
@@ -26,8 +26,11 @@ export async function GET({request}: {request: any}) {
     console.log('Lendo o arquivo:', filePath);
     let fileContent = fs.readFileSync(filePath, 'utf-8');
 
+
+  if (language) {
     const promptLanguage = 'Língua de resposta: ' + language;
     fileContent = promptLanguage + '\n\n' + fileContent;
+  }
 
     // Verificar se é um arquivo JSON ou texto
     if (document.endsWith('.json')) {
